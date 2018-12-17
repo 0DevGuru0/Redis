@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+  body
+    label(for='name') Name:
+    input#name(type='text')
+    button#say_hello Say Hello!
+    label(for='room') Room:
+    input#room(type='text')
+    button#join_room Join Room
+    ul#list
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
+    script.
+      var socket = io({transport:['websocket'],upgrade:false});
+      document.getElementById('join_room')
+      .addEventListener('click',(e)=>{
+      socket.emit('room.join',document.getElementById('room').value);
+      })
+      document.getElementById('say_hello').addEventListener('click',(e)=>{
+      socket.emit('event',{
+      name:document.getElementById('name').value,
+      room:document.getElementById('room').value})
+      })
+      var addLi = (message)=>{
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(message));
+      document.getElementById('list').appendChild(li);
+      }
+      socket.on('event',addLi)
