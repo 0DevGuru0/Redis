@@ -7,8 +7,8 @@ var redis = new Redis();
 // import GeoSpatial from './Redis/geospatial'
 // GeoSpatial(redis)
 
-import SortedSets from './Redis/sortedSets';
-SortedSets(redis)
+// import SortedSets from './Redis/sortedSets';
+// SortedSets(redis)
 
 // import Hash from './Redis/Hashes';
 // Hash(redis);
