@@ -1,2 +1,2 @@
 # Redis
-Redis Commends cheatShit
+Redis Commends cheatSheet
